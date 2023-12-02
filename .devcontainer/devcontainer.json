@@ -1,0 +1,29 @@
+{
+	"name": "Python",
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "app",
+	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+	"forwardPorts": [
+		8000
+	],
+	"postStartCommand": "uvicorn app.main:app --reload",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-python.python",
+				"ms-python.autopep8",
+				"ms-python.vscode-pylance",
+				"ms-azuretools.vscode-docker"
+			],
+			"settings": {
+				"python.analysis.typeCheckingMode": "strict",
+				"editor.formatOnSave": true,
+				"files.trimFinalNewlines": true,
+				"files.trimTrailingWhitespace": true,
+				"[python]": {
+					"editor.defaultFormatter": "ms-python.autopep8"
+				}
+			}
+		}
+	}
+}
