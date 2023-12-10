@@ -1,5 +1,5 @@
 from enum import Enum
-from fastapi import FastAPI
+from fastapi import FastAPI, Query
 from pydantic import BaseModel
 
 app = FastAPI()
@@ -56,3 +56,9 @@ class Item(BaseModel):
 @app.post("/items/")
 async def create_item(item: Item):
     return item
+
+
+@app.get("/items/")
+async def readItems(q: list[str] | None = Query(default=None, max_length=50)):
+    query_items = {"q": q}
+    return query_items
