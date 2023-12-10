@@ -59,6 +59,6 @@ async def create_item(item: Item):
 
 
 @app.get("/items/")
-async def readItems(q: list[str] | None = Query(default=None, max_length=50)):
+async def read_items(q: list[str] | None = Query(default=None, max_length=50)):
     query_items = {"q": q}
     return query_items
