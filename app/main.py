@@ -47,6 +47,11 @@ async def get_model(model_name: ModelName):
     return {"model_name": model_name, "model": ModelName.lenet, "message": "Have some residuals"}
 
 
+class Image(BaseModel):
+    url: str
+    name: str
+
+
 class Item(BaseModel):
     name: str
     description: str | None = Field(
@@ -55,6 +60,7 @@ class Item(BaseModel):
     price: float = Field(
         gt=0, description="The price must be greater than zero")
     tax: float | None = None
+    image: Image | None = None
 
 
 @app.post("/items/")
